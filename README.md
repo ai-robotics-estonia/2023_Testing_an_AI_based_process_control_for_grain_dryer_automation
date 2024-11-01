@@ -1,11 +1,11 @@
 *This is a template repository for this organization. Start by replacing the placeholder for the project name with its actual title.*
 
-# [Demonstration Project title]
+# Testing an AI based process control for grain dryer automation
 
 ## Summary
 | Company Name | [Intellidry OÜ](https://intellidry.eu) |
 | :--- | :--- |
-| Development Team Lead Name | [Veiko Vunder](https://profile.link) |
+| Development Team Lead Name | Veiko Vunder|
 | Development Team Lead E-mail | [veiko.vunder@ut.ee](mailto:veiko.vunder@ut.ee) |
 | Duration of the Demonstration Project | 06/2023-04/2024 |
 | Final Report | [IntelliDryProjectReport2024.pdf](https://github.com/ai-robotics-estonia/Testing_an_AI_based_process_control_for_grain_dryer_automation/blob/main/assets/IntelliDryProjectReport2024.py) |
@@ -31,7 +31,7 @@ The technological solution includes a sensor set integrated with the dryer to tr
 Relevant scientific literature was reviewed to guide data analysis and model decisions.
 
 ### AI Technologies
-In this demo project, we developed a physical model to capture essential elements of grain drying, including heat transfer from incoming air to grain, heat loss to the environment, and the mass of grain being dried. To estimate moisture content, we used a differential thin-layer drying model, where moisture change depends on the difference between current and equilibrium moisture—closely tied to grain temperature and well-documented in the literature. Due to the complexity of solving these equations analytically, we applied numerical methods(fourth order Runge-Kutta), and optimized parameters using the Differential Evolution algorithm with data from the dryer. We also tested time-series machine learning models to predict moisture changes based on temperature but found that a larger dataset was necessary for accuracy. Despite that the model is currently grounded in physical drying processes, it includes learning capabilities through re-optimization techniques, enabling it to adapt and improve as new drying cycles are introduced.
+In this demo project, we developed a physical model to capture essential elements of grain drying, including heat transfer from incoming air to grain, heat loss to the environment, and the mass of grain being dried. To estimate moisture content, we used a differential thin-layer drying model, where moisture change depends on the difference between current and equilibrium moisture. The equilibrium moisture content is in turn closely tied to grain temperature and well studied in the literature. Due to the complexity of solving these equations analytically, we applied numerical methods(fourth order Runge-Kutta), and optimized parameters using the Differential Evolution algorithm with data from the dryer. We also tested time-series machine learning models to predict moisture changes based on temperature but found that a larger dataset was necessary for accuracy. Despite that the model is currently grounded in physical drying processes, it includes learning capabilities through re-optimization techniques, enabling it to adapt and improve as new drying cycles are introduced.
 
 ### Technological Results
 
