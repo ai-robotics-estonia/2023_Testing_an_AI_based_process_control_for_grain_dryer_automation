@@ -3,72 +3,59 @@
 # [Demonstration Project title]
 
 ## Summary
-| Company Name | [Company](https://website.link) |
+| Company Name | [Intellidry OÜ](https://intellidry.eu) |
 | :--- | :--- |
-| Development Team Lead Name | [Dr. John Smith](https://profile.link) |
-| Development Team Lead E-mail | [email@example.com](mailto:email@example.com) |
-| Duration of the Demonstration Project | month/year-month/year |
-| Final Report | [Example_report.pdf](https://github.com/ai-robotics-estonia/_project_template_/files/13800685/IC-One-Page-Project-Status-Report-10673_PDF.pdf) |
-
-### Each project has an alternative for documentation
-1. Fill in the [description](#description) directly in the README below *OR*;
-2. make a [custom agreement with the AIRE team](#custom-agreement-with-the-AIRE-team).
+| Development Team Lead Name | [Veiko Vunder](https://profile.link) |
+| Development Team Lead E-mail | [veiko.vunder@ut.ee](mailto:veiko.vunder@ut.ee) |
+| Duration of the Demonstration Project | 06/2023-04/2024 |
+| Final Report | [IntelliDryProjectReport2024.pdf](https://github.com/ai-robotics-estonia/Testing_an_AI_based_process_control_for_grain_dryer_automation/blob/main/assets/IntelliDryProjectReport2024.py) |
 
 # Description
 ## Objectives of the Demonstration Project
-*Please describe your project objectives in detail.*
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+The demo project aimed to develop an AI-based model solution for optimizing grain drying processes, designed to integrate with existing grain dryers. Currently, there are two main dryer types: batch dryers and continuous dryers. IntelliDry’s initial goal is to implement AI-driven drying control specifically for batch dryers, regardless of their current remote management capabilities. While we already offer remote management functionality, and many newer dryers support it, only a limited number are equipped with this feature. Through this demo project, we will create a baseline model that estimates grain moisture content - an essential parameter to reach IntelliDry's long-term goal of providing energy efficient heating schedule recommendations based on dryer type and other input data.
 
 ## Activities and Results of the Demonstration Project
 ### Challenge
-*Please describe challenge addressed (i.e, whether and how the initial challenge was changed during the project, for which investment the demonstration project was provided).*
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+The primary challenge is to develop a model that accurately describes the grain drying process. During the demo project, we assessed which data could be leveraged to build this model. The demo dryer provided temperature data for both incoming and outgoing air, as well as temperature readings from within the drying sections. An effective model would enable accurate predictions of drying time and operator intervention needs, while also helping to prevent over-drying. Although the initial plan was to control the drying process through an automated system, this approach was deferred. Instead, project resources were directed toward data collection, preparation, and model testing. Operating the dryer’s burner directly was deemed impractical, as it would detract from the project’s focus. While the potential for automated dryer control remains, this project concentrated on identifying key data requirements for the model and advancing its development.
 
 ### Data Sources
-*Please describe which data was used for the technological solution.*  
-- [Source 1],
-- [Source 2],
-- etc... .
+
+The technological solution includes a sensor set integrated with the dryer to track temperature and humidity changes during drying. This data is essential for developing the drying process model, a task that will continue beyond this demo project. We also manually measured grain and legume moisture throughout drying. Data collected includes:
+
+- Incoming and outgoing air temperature and humidity
+- Furnace air temperature
+- Temperatures at the beginning, middle, and end of the drying section
+
+Relevant scientific literature was reviewed to guide data analysis and model decisions.
 
 ### AI Technologies
-*Please describe and justify the use of selected AI technologies.*
-- [AI technology 1],
-- [AI technology 2],
-- etc... .
+In this demo project, we developed a physical model to capture essential elements of grain drying, including heat transfer from incoming air to grain, heat loss to the environment, and the mass of grain being dried. To estimate moisture content, we used a differential thin-layer drying model, where moisture change depends on the difference between current and equilibrium moisture—closely tied to grain temperature and well-documented in the literature. Due to the complexity of solving these equations analytically, we applied numerical methods(fourth order Runge-Kutta), and optimized parameters using the Differential Evolution algorithm with data from the dryer. We also tested time-series machine learning models to predict moisture changes based on temperature but found that a larger dataset was necessary for accuracy. Despite that the model is currently grounded in physical drying processes, it includes learning capabilities through re-optimization techniques, enabling it to adapt and improve as new drying cycles are introduced.
 
 ### Technological Results
-*Please describe the results of testing and validating the technological solution.*
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+The model’s effectiveness for drying grains and legumes relies on data that was insufficiently collected during the demo dryer’s operation. The data gathered served as the foundation for development. With no drying occurring in winter, we tested identified relationships using existing datasets, revealing a strong correlation between grain temperature and moisture content, allowing us to estimate the drying behavior based on temperature readings.
+
+For accurate predictions, it's crucial to consider temperature changes, influenced by unmeasured factors like flow rate, air velocity, and reservoir volume. The first two can be adjusted by the operator, impacting model parameters. Automating flow rate detection through temperature data will be a key focus of the next demo project.
+
+During the drying period, operators monitored the lower grain temperature to estimate dryness. Based on the grain type, they determined the optimal time for moisture measurement and assessed batch readiness. A temperature-dependent cooling process was implemented and tested, with the control system initiating cooling upon reaching the operator-set grain temperature, thereby minimizing energy consumption and equipment wear.
 
 ### Technical Architecture
-*Please describe the technical architecture (e.g, presented graphically, where the technical solution integration with the existing system can also be seen).*
-- [Component 1],
-- [Component 2], 
-- etc... .
 
-![backend-architecture](https://github.com/ai-robotics-estonia/_project_template_/assets/15941300/6d405b21-3454-4bd3-9de5-d4daad7ac5b7)
+![technical-architecture](https://github.com/ai-robotics-estonia/Testing_an_AI_based_process_control_for_grain_dryer_automation/blob/main/assets/architecture.png)
 
 
 ### User Interface 
-*Please describe the details about the user interface(i.e, how does the client 'see' the technical result, whether a separate user interface was developed, command line script was developed, was it validated as an experiment, can the results be seen in ERP or are they integrated into work process)*
+The user interface is available on both the server and client sides, with enhancements made to the operator’s interface. Operators can monitor dryer temperatures and control electric motors, with their statuses clearly displayed. For instance, if the burner malfunctions, the interface indicates both the motor status and the incoming air temperature. Sensor temperature readings are presented graphically, allowing operators to view cycles of up to six hours.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Operators can set a trigger value for one temperature sensor, which automatically initiates cooling for the batch. In the demo dryer, it was determined that the moisture level of oats is optimal when the lower temperature sensor approaches 55°C. The system can automatically initiate cooling upon reaching this threshold and notify the operator accordingly.
 
 ### Future Potential of the Technical Solution
-*Please describe the potential areas for future use of the technical solution.*
-- [Use case 1],
-- [Use case 2],
-- etc... .
+The results and conclusions from the first project indicated that to improve the model, more training data is needed. Additional data is required from a greater variety of dryers. Furthermore, it remains unclear which model would perform best. Consequently, we decided to seek further support from AIRE for the AI model's development. With assistance from PRIA, we equipped ten additional dryers with sensors to collect data during the 2024 drying season. Development work is currently underway in the machine learning domain, and the company is also working on pricing and business models to launch the service for Estonian farmers.
 
 ### Lessons Learned
-*Please describe the lessons learned (i.e. assessment whether the technological solution actually solved the initial challenge).*
+The technological solution successfully achieved one of its key objectives: enabling mobile monitoring and operation of the dryer. A baseline model was developed, which can fit the limited amount of data we have collected so far. However, this data has raised several questions that require additional information from other dryers for further refinement. By comparing the grain drying processes across different dryers, we can enhance the model by adding or adjusting parameters based on broader insights.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+A significant lesson learned is the necessity of measuring a wider range of physical attributes for model training and development than initially anticipated. Although grain drying may appear straightforward based on initial analysis, the complexity of the process indicates that capturing more variables from various sources will improve the model's performance. Ultimately, the goal is to identify the minimum necessary hardware to enhance the model's predictive accuracy and ensure effective service delivery for Estonian farmers.
 
-# Custom agreement with the AIRE team
-*If you have a unique project or specific requirements that don't fit neatly into the Docker file or description template options, we welcome custom agreements with our AIRE team. This option allows flexibility in collaborating with us to ensure your project's needs are met effectively.*
-
-*To explore this option, please contact our demonstration projects service manager via katre.eljas@taltech.ee with the subject line "Demonstration Project Custom Agreement Request - [Your Project Name]." In your email, briefly describe your project and your specific documentation or collaboration needs. Our team will promptly respond to initiate a conversation about tailoring a solution that aligns with your project goals.*
