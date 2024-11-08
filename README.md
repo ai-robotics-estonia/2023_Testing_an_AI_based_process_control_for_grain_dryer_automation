@@ -1,5 +1,3 @@
-*This is a template repository for this organization. Start by replacing the placeholder for the project name with its actual title.*
-
 # Testing an AI based process control for grain dryer automation
 
 ## Summary
@@ -8,7 +6,7 @@
 | Development Team Lead Name | Veiko Vunder|
 | Development Team Lead E-mail | [veiko.vunder@ut.ee](mailto:veiko.vunder@ut.ee) |
 | Duration of the Demonstration Project | 06/2023-04/2024 |
-| Final Report | [IntelliDryProjectReport2024.pdf](https://github.com/ai-robotics-estonia/Testing_an_AI_based_process_control_for_grain_dryer_automation/blob/main/assets/IntelliDryProjectReport2024.py) |
+| Final Report | [IntelliDryProjectReport2024.pdf](https://github.com/ai-robotics-estonia/Testing_an_AI_based_process_control_for_grain_dryer_automation/blob/main/assets/IntelliDryProjectReport2024.pdf) |
 
 # Description
 ## Objectives of the Demonstration Project
